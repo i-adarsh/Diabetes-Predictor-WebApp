@@ -1,11 +1,11 @@
 from flask import Flask
 from flask import render_template
 from flask import request
-from keras.models import load_model
+#from keras.models import load_model
 
 app = Flask("Adarsh Industries")
 
-model = load_model("dia_model.h5")
+#model = load_model("dia_model.h5")
 
 @app.route('/home')
 def home():
@@ -21,8 +21,8 @@ def mymenu():
     bmi = request.args.get('bmi')
     pedigree = request.args.get('pedigree')
     age = request.args.get('age')
-    output = model.predict([[pregnant, glucose, bp, thickness, insulin, bmi, pedigree, age]])
-    if output == '0':
+    #output = model.predict([[pregnant, glucose, bp, thickness, insulin, bmi, pedigree, age]])
+    if pregnant == '0':
         return render_template('pass_test.html')
     else:
         return render_template('fail_test.html')
